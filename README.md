@@ -1,7 +1,11 @@
 # Chicken-Run
 
-## Description
-This is a recreation of the iconic **"Chrome Dinosaur"** game made with **Pygame** and **object oriented programming**. I call it **Chicken Run**.
+## Beskrivelse
+Gjenskapelse av det ikoniske **Chrome Dino** spillet. Dette er laget med **Pygame** og **Objektorientert programmering** og det heter **Chicken Run**
 
-## Functionality
-A chickn
+
+
+![alt text](image-1.png)
+
+
+
