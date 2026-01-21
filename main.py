@@ -3,7 +3,7 @@ pygame.init()
  
 font = pygame.font.SysFont('Impact', 24)
 
-bredde, hoyde = 1000, 300
+bredde, hoyde = 900, 300
 hvit = (255, 255, 255)
 FPS = 60
 
