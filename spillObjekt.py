@@ -3,10 +3,10 @@ pygame.init()
  
 
 bredde, hoyde = 800, 600
-hvit = (255, 255, 255)
 FPS = 60
 
 skjerm = pygame.display.set_mode((bredde, hoyde))
+
 
 # Superklasse som kylling og hindring 
 
@@ -17,6 +17,6 @@ class SpillObjekt:
         self.size_x = storrelse_x
         self.size_y = storrelse_y
 
-#metode for å tegne på skjermen
-    def tegn(self):
-        pygame.draw.rect(skjerm, hvit, (self.pos_x, self.pos_y, self.size_x, self.size_y))
+# metode for å spill objekter på skjermen
+    def tegn(self, farge):
+        pygame.draw.rect(skjerm, farge, (self.pos_x, self.pos_y, self.size_x, self.size_y))
