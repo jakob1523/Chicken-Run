@@ -3,9 +3,25 @@
 ## Beskrivelse
 Gjenskapelse av det ikoniske **Chrome Dino** spillet. Dette er laget med **Pygame** og **Objektorientert programmering** og det heter **Chicken Run**
 
+---
 
+## Funksjonalitet
+- Kylling som hopper
+- Hindring som skapes hvert sekund
+- Hindring som beveges
+- Økes pong med tid
 
-![alt text](image-1.png)
+---
+
+## Bevegelse
+- Hopp: `Space`
+- Hopp: `Pil Opp`
+- Dukk: `Pil Ned`
+
+---
+
+## Klassediagram
+![Klassediagram](bilder/image-1.png)
 
 
 
