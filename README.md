@@ -21,7 +21,7 @@ Gjenskapelse av det ikoniske **Chrome Dino** spillet. Dette er laget med **Pygam
 ---
 
 ## Klassediagram
-![Klassediagram](bilder/image-1.png)
+![Klassediagram](bilder/klassediagram.png)
 
 
 

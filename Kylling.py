@@ -1,5 +1,4 @@
 from spillObjekt import SpillObjekt
-bredde, hoyde = 800, 600
 
 # Arver fra spillobjekt
 class Kylling(SpillObjekt):
