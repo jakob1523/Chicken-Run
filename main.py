@@ -30,6 +30,7 @@ aktive_hindringer = []
 # Variabler
 teller = 0
 fart_okning = 0
+spawn_rate = 0
 restart_tekst = font.render("Trykk R for restart", True, (255, 255, 255))
 
 # Farger
@@ -48,7 +49,7 @@ class Spill:
     def loop(self):
         global teller
         global fart_okning
-
+        
         while self.aktiv:
             teller += 1
 
@@ -95,20 +96,24 @@ class Spill:
             pygame.draw.rect(skjerm, (150, 75, 0), (0, 230, 900, 100))
             pygame.draw.rect(skjerm, (18, 207, 14), (0, 230, 900, 15))
 
-            if teller % 300 == 0:
+            if teller % 300 == 0 and not fart_okning > 6:
                 fart_okning += 1
 
+            if fart_okning >= 4:
+                spawn_rate = 45
+            else:
+                spawn_rate = FPS
+
             # Ny hindring hvert sekund
-            if teller % FPS == 0 and not self.spill_over:
+            if teller % spawn_rate == 0 and not self.spill_over:
                 hindringen = random.choice(hindringer)
                 ny_hindring = Hindring(
-                    900,
-                    hindringen.pos_y,
-                    hindringen.size_x,
-                    hindringen.size_y,
-                    hindringen._fart_x
+                900,
+                hindringen.pos_y,
+                hindringen.size_x,
+                hindringen.size_y,
+                hindringen._fart_x + fart_okning
                 )
-                ny_hindring._fart_x += fart_okning
                 aktive_hindringer.append(ny_hindring)
 
             # Håndterer hindringer
