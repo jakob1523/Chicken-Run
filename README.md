@@ -8,6 +8,7 @@ Gjenskapelse av det ikoniske **Chrome Dino** spillet. Dette er laget med **Pygam
 ## Funksjonalitet
 - Kylling som hopper
 - Hindring som skapes hvert sekund
+- Hindring skapes tilfeldig
 - Hindring som beveges
 - Økes pong med tid
 
