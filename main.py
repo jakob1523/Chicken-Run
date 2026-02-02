@@ -29,12 +29,14 @@ aktive_hindringer = []
 
 # Variabler
 teller = 0
+fart_okning = 0
 restart_tekst = font.render("Trykk R for restart", True, (255, 255, 255))
 
 # Farger
 Hvit = (255, 255, 255)
 Rood = (255, 0, 0)
 
+# Oppretter Spill klasse
 class Spill:
     def __init__(self):
         self.aktiv = True
@@ -42,13 +44,10 @@ class Spill:
         self.spill_over = False
         self.dukker = False
 
-    def restart(self):
-        aktive_hindringer.clear()
-        self.score = 0
-        self.spill_over = False
-
+    # Game loop metode
     def loop(self):
         global teller
+        global fart_okning
 
         while self.aktiv:
             teller += 1
@@ -66,7 +65,7 @@ class Spill:
                         kylling.hopp()
 
                 # Trykker pil ned for å dukke
-                    if hendelse.key == pygame.K_DOWN:
+                    if hendelse.key == pygame.K_DOWN and not self.dukker:
                         kylling.size_y = 30
                         if not kylling.hopper:
                             kylling.pos_y = 200
@@ -75,7 +74,10 @@ class Spill:
                     
                     # Trykker R for restart
                     if hendelse.key == pygame.K_r and self.spill_over:
-                        self.restart()
+                        aktive_hindringer.clear()
+                        self.score = 0
+                        fart_okning = 0
+                        self.spill_over = False
 
 
                 # Slipper pil ned for å stå
@@ -93,6 +95,9 @@ class Spill:
             pygame.draw.rect(skjerm, (150, 75, 0), (0, 230, 900, 100))
             pygame.draw.rect(skjerm, (18, 207, 14), (0, 230, 900, 15))
 
+            if teller % 300 == 0:
+                fart_okning += 1
+
             # Ny hindring hvert sekund
             if teller % FPS == 0 and not self.spill_over:
                 hindringen = random.choice(hindringer)
@@ -103,6 +108,7 @@ class Spill:
                     hindringen.size_y,
                     hindringen._fart_x
                 )
+                ny_hindring._fart_x += fart_okning
                 aktive_hindringer.append(ny_hindring)
 
             # Håndterer hindringer
@@ -122,13 +128,14 @@ class Spill:
             # Håndterer Score
             if not self.spill_over and teller % 7 == 0:
                 self.score += 1
+                
 
             score_tekst = font.render(str(self.score), True, (255, 255, 255))
             skjerm.blit(score_tekst, (bredde - 100, 20))
 
             # Spill over
             if self.spill_over:
-                skjerm.blit(restart_tekst, (bredde / 2 - 80, hoyde / 2 - 40))
+                skjerm.blit(restart_tekst, (bredde / 2 - 100, hoyde / 2 - 40))
                 tap = font.render(f"Du fikk {self.score} score", True, (255, 255, 255))
                 skjerm.blit(tap, (bredde / 2 - 90, 50))
 
@@ -139,6 +146,6 @@ class Spill:
             pygame.display.flip()
             clock.tick(FPS)
 
-
+# Kjører game loop
 Spill().loop()
 pygame.quit()
